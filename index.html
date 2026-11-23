@@ -42,21 +42,21 @@
           <p class="hero-sub reveal" style="--delay:.2s">一个词，两种口音，一条共同的来路。</p>
           <p class="hero-lead reveal" style="--delay:.28s">
             点一张词卡，听两岸普通人怎么讲；看两个字如何走到一起。<br />
-            30 秒，听见我们共享的汉语现场。
+            用一小段声音，听见我们共享的汉语现场。
           </p>
           <div class="hero-actions reveal" style="--delay:.36s">
             <button class="btn btn-primary start-btn" id="startBtn" type="button">
               <span>开始聆听</span>
-              <span class="btn-note">约 30 秒</span>
+              <span class="btn-note">听见 · 溯源 · 共鸣</span>
             </button>
             <button class="btn btn-ghost" id="introDetailBtn" type="button">先看一组词源</button>
           </div>
           <div class="hero-meta reveal" style="--delay:.44s" aria-label="体验信息">
-            <span><b>6</b> 组日常词</span>
-            <span><b>24</b> 个声音</span>
-            <span><b>3</b> 类同源路径</span>
+            <span><b>3</b> 组日常词</span>
+            <span><b>12</b> 个声音</span>
+            <span><b>2</b> 类同源路径</span>
           </div>
-          <p class="hero-hint reveal" style="--delay:.52s"><span class="hint-dot" aria-hidden="true"></span> 建议开启声音 · 佩戴耳机</p>
+          <p class="hero-hint reveal" style="--delay:.52s"><span class="hint-dot" aria-hidden="true"></span> 建议开启声音 · 佩戴耳机 · 生成音频 · 故事为演示文本</p>
           <div class="intro-route" aria-hidden="true">
             <span><b>01</b>听见</span><i></i><span><b>02</b>溯源</span><i></i><span><b>03</b>共鸣</span>
           </div>
@@ -93,15 +93,15 @@
 
           <div class="float-tag tag-a"><small>大陆</small><b>太阳</b><i>tài yáng</i></div>
           <div class="float-tag tag-b"><small>台湾</small><b>日頭</b><i>rì tóu</i></div>
-          <div class="float-tag tag-c"><small>大陆</small><b>客人</b><i>kè rén</i></div>
-          <div class="float-tag tag-d"><small>台湾</small><b>人客</b><i>rén kè</i></div>
+          <div class="float-tag tag-c"><small>大陆</small><b>期 qī</b><i>阴平</i></div>
+          <div class="float-tag tag-d"><small>台湾</small><b>期 qí</b><i>阳平</i></div>
 
           <p class="art-caption"><span></span> 两种声音，一个源头 <span></span></p>
         </div>
       </div>
       <div class="intro-bottom">
         <p>声音来自日常，词源回到共同。</p>
-        <p class="intro-scroll">约 30 秒 <span aria-hidden="true">↓</span></p>
+        <p class="intro-scroll">向下探索 <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -115,41 +115,53 @@
           <div class="journey-step" data-step="echo"><span>03</span><b>共鸣</b></div>
           <div class="journey-line" aria-hidden="true"><i id="journeyBar"></i></div>
         </div>
-        <div class="timer" aria-label="30秒体验计时"><b id="timerValue">30</b><span>″</span></div>
+        <div class="timer" aria-label="当前进度"><b id="journeyPercent">0%</b><span>体验进度</span></div>
+      </div>
+
+      <div class="audio-note" id="audioNote">
+        <span class="audio-note-badge"><i aria-hidden="true"></i>生成音频 · 演示文本</span>
+        <p>当前为生成音频与团队撰写的演示故事，均非真人录音、非田野采集；两岸各有独立音轨，普通话与台湾口音分别朗读。「期/微」这类同字异读词，台湾侧单字示范读本地标准音（期 qí / 微 wéi）；点「声调」可听合成的声调轮廓。正式版替换为两岸田野录音与受访者确认稿。</p>
+        <span class="audio-note-status" id="voiceStatus">正在检测本机语音…</span>
+        <button class="audio-note-close" id="audioNoteClose" type="button" aria-label="收起声音说明">×</button>
       </div>
 
       <div class="pair-strip">
         <span class="pair-strip-label">词笺</span>
         <div class="pair-list" id="pairList" role="tablist" aria-label="选择一组同源词"></div>
-        <span class="pair-count"><b id="pairIndex">01</b> <i>/ 06</i></span>
+        <span class="pair-count"><b id="pairIndex">01</b> <i>/ 03</i></span>
       </div>
+      <p class="pair-strip-note">首版呈现 <b>3/20</b> 组 · 田野声音持续汇入中</p>
 
       <div class="experience-grid">
         <section class="side-panel side-mainland" data-side="mainland" aria-label="大陆词汇与声音">
           <div class="side-head">
             <span class="side-dot" aria-hidden="true"></span>
-            <b>大陆</b><small>普通话</small>
+            <b>大陆</b><small>普通话 · 拼音</small>
             <span class="side-line" aria-hidden="true"></span>
           </div>
           <button class="word-card" id="cardMainland" type="button" data-side="mainland" aria-label="播放大陆发音">
             <span class="card-script" id="cnScript">简体</span>
             <span class="card-word" id="cnWord">太阳</span>
             <span class="card-pinyin" id="cnPinyin">tài yáng</span>
+            <span class="card-tone" id="cnTone" aria-hidden="true"></span>
             <span class="card-listen"><span class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span><em id="cnListen">点击听音</em></span>
             <span class="card-voice" id="cnVoice">声音 1 / 2</span>
             <span class="card-glow" aria-hidden="true"></span>
           </button>
-          <div class="story" id="cnStory">
+          <div class="story is-demo" id="cnStory">
             <div class="story-person">
               <span class="avatar" id="cnAvatar">青</span>
-              <div><b id="cnTag">青年 · 在校学生</b><small id="cnPlace">福建 · 厦门</small></div>
+              <div><b id="cnTag">演示 · 青年 · 在校学生</b><small id="cnPlace">福建 · 厦门</small></div>
+              <span class="demo-flag" title="团队撰写的演示文本，非田野采集">演示</span>
             </div>
             <p class="story-quote" id="cnQuote">“小时候放学，奶奶总说‘太阳落山前回家’。”</p>
+            <p class="story-text" id="cnStoryText"></p>
             <button class="text-link" type="button" data-detail-side="mainland">完整故事 <span aria-hidden="true">↗</span></button>
           </div>
           <div class="voice-row">
             <button class="voice-cycle" type="button" data-voice-side="mainland" aria-label="切换大陆声音">↻</button>
             <span>换一个声音</span>
+            <button class="voice-tone" type="button" data-tone-side="mainland" aria-label="听大陆四声示范">声调</button>
             <span class="voice-dots" id="cnDots" aria-hidden="true"><i class="is-on"></i><i></i></span>
           </div>
         </section>
@@ -168,6 +180,7 @@
               <span class="ghost ghost-left" id="ghostLeft">太阳</span>
               <span class="ghost ghost-right" id="ghostRight">日頭</span>
             </div>
+            <div class="tone-converge" id="toneConverge" aria-hidden="true"></div>
             <div class="seal" id="sourceSeal" aria-hidden="true">
               <span class="seal-inner" id="sourceChar">日</span>
             </div>
@@ -177,9 +190,10 @@
           <div class="stage-copy">
             <p class="stage-hint" id="stageHint">点一张词卡，听见它的来路</p>
             <p class="stage-note" id="stageNote">两条日常的叫法，正在等一个共同的源头。</p>
-            <div class="stage-actions">
-              <button class="btn btn-small btn-ghost" id="listenOtherBtn" type="button" disabled>听另一岸</button>
-              <button class="btn btn-small btn-primary" id="detailBtn" type="button" disabled>看词源</button>
+            <div class="stage-actions" id="stageActions">
+              <p class="stage-action-hint" id="stageActionHint">点一张词卡，下一步会出现在这里</p>
+              <button class="btn btn-small btn-ghost" id="listenOtherBtn" type="button" hidden>听另一岸</button>
+              <button class="btn btn-small btn-primary" id="detailBtn" type="button" hidden>看词源</button>
             </div>
           </div>
           <div class="stage-foot">
@@ -191,28 +205,32 @@
         <section class="side-panel side-taiwan" data-side="taiwan" aria-label="台湾词汇与声音">
           <div class="side-head">
             <span class="side-dot" aria-hidden="true"></span>
-            <b>台湾</b><small>国语</small>
+            <b>台湾</b><small>国语 · 注音</small>
             <span class="side-line" aria-hidden="true"></span>
           </div>
           <button class="word-card" id="cardTaiwan" type="button" data-side="taiwan" aria-label="播放台湾发音">
             <span class="card-script" id="twScript">繁体</span>
             <span class="card-word" id="twWord">日頭</span>
             <span class="card-pinyin" id="twPinyin">rì tóu</span>
+            <span class="card-tone" id="twTone" aria-hidden="true"></span>
             <span class="card-listen"><span class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span><em id="twListen">点击听音</em></span>
             <span class="card-voice" id="twVoice">声音 1 / 2</span>
             <span class="card-glow" aria-hidden="true"></span>
           </button>
-          <div class="story" id="twStory">
+          <div class="story is-demo" id="twStory">
             <div class="story-person">
               <span class="avatar" id="twAvatar">中</span>
-              <div><b id="twTag">中年 · 小吃店店主</b><small id="twPlace">台南</small></div>
+              <div><b id="twTag">演示 · 中年 · 小吃店店主</b><small id="twPlace">台南</small></div>
+              <span class="demo-flag" title="团队撰写的演示文本，非田野采集">演示</span>
             </div>
             <p class="story-quote" id="twQuote">“我们这里都说‘日头’。日头赤炎炎，骑机车出门，眼睛都睁不开。”</p>
+            <p class="story-text" id="twStoryText"></p>
             <button class="text-link" type="button" data-detail-side="taiwan">完整故事 <span aria-hidden="true">↗</span></button>
           </div>
           <div class="voice-row">
             <button class="voice-cycle" type="button" data-voice-side="taiwan" aria-label="切换台湾声音">↻</button>
             <span>换一个声音</span>
+            <button class="voice-tone" type="button" data-tone-side="taiwan" aria-label="听台湾四声示范">声调</button>
             <span class="voice-dots" id="twDots" aria-hidden="true"><i class="is-on"></i><i></i></span>
           </div>
         </section>
@@ -220,13 +238,17 @@
 
       <div class="voice-dock" id="voiceDock" aria-live="polite">
         <div class="dock-head">
+          <span class="dock-avatar" id="dockAvatar">声</span>
           <span class="dock-region" id="dockRegion">等待发声</span>
           <b id="dockTag">点一张词卡</b>
+          <span class="demo-flag" id="dockDemoFlag" hidden title="团队撰写的演示文本，非田野采集">演示</span>
           <button class="dock-switch" id="dockSwitch" type="button">换声音</button>
         </div>
         <p id="dockQuote">点一张词卡，先听听这一岸的声音。</p>
+        <p class="dock-story" id="dockStory"></p>
         <div class="dock-actions">
           <button id="dockOther" type="button">听另一岸</button>
+          <button id="dockTone" type="button">声调示范</button>
           <button id="dockDetail" type="button">完整故事</button>
         </div>
       </div>
@@ -266,14 +288,16 @@
           <p id="detailRoute"></p>
         </div>
       </div>
+      <p class="detail-pron-note" id="detailPronNote" hidden></p>
       <div class="detail-block">
-        <div class="detail-block-head"><h3>生活里的声音</h3><span>4 个声音档案</span></div>
+        <div class="detail-block-head"><h3>生活里的声音</h3><span>4 个声音档案 · 演示文本</span></div>
+        <p class="detail-demo-note">以下故事为团队撰写的演示文本，非田野采集；正式版替换为受访者确认稿。</p>
         <div class="detail-stories" id="detailStories"></div>
       </div>
       <div class="detail-block detail-cite">
         <h3>考据参考</h3>
         <ul id="detailCitations"></ul>
-        <p class="fineprint">词源说明依据项目提案整理。正式上线前，由语言学专家复审；故事文本经受访者本人确认后定稿。</p>
+        <p class="fineprint">词源说明依据项目提案整理，正式上线前由语言学专家复审；演示版故事为团队撰写，非田野采集，正式版替换为受访者确认稿。</p>
       </div>
       <div class="detail-actions">
         <button class="btn btn-primary" id="detailShare" type="button">生成同源卡</button>
@@ -309,15 +333,15 @@
       <span class="share-kicker">ABOUT · 关于这件小事</span>
       <h2 id="aboutTitle">同源，不是一句口号，<br />是一个可以听见的日常。</h2>
       <div class="about-body">
-        <p>“同源共响”从两岸通用语中挑选有明确共同来源、却在发音、词形或语义上分流的日常词。每个词配一段普通人的声音与生活片段，再让两个字在屏幕上回到共同的源头。</p>
+        <p>“同源共响”从两岸通用语中挑选有明确共同来源、却在发音或词形上分流的日常词。每个词配一段讲述者的声音与生活片段，再让两个字（或两条声调）在屏幕上回到共同的源头。当前为演示样片，所有故事均为团队撰写，非田野采集。</p>
         <p>一次体验约 30 秒：<b>听见</b>差异，<b>看见</b>同源，<b>听见</b>汇流。你可以换声音、看完整词源，也可以生成一张同源卡，把这条来路分享给另一个人。</p>
         <div class="about-note">
           <h3>声音说明</h3>
-          <p>当前演示版使用浏览器语音合成作为“声音样带”，用于验证交互节奏；正式版将替换为两岸田野采集的真人录音，并保留生活场景环境音。所有故事文本为演示文本，正式版需经受访者确认与授权。</p>
+          <p>当前演示版使用生成音频，<b>不是真人录音、非田野采集</b>：每组词的大陆侧为普通话音轨、台湾侧为台湾口音音轨，分别朗读生活短句，让「期 qī / qí」「微 wēi / wéi」这类同字异读的差异真正听得见。台湾侧单字示范读本地标准音，并附注音与声调轮廓。音频若加载失败会回退到浏览器语音合成，届时用同音字引导读音。正式版将把每个声音替换为两岸田野采集的真人录音，并保留生活场景环境音；所有故事文本为演示文本，正式版需经受访者确认与授权。</p>
         </div>
         <div class="about-note">
           <h3>词库与考据</h3>
-          <p>首版呈现 6 组词，覆盖同源异读、同源异形、同源语义偏移三类路径；项目完整词库为 20 组。词源说明依据《两岸常用词典》《汉语大词典》《广韵》等文献整理，正式上线前由专家复审。</p>
+          <p>首版呈现 3 组词：1 组同源异形词、2 组同源异读词；完整词库 20 组另含语义偏移类。词源说明依据《两岸常用词典》《汉语大词典》《广韵》等文献整理，正式上线前由专家复审。</p>
         </div>
         <div class="about-sign">
           <span class="about-seal">源</span>
@@ -339,6 +363,19 @@
         <div><span>02</span><b>讲一件小事</b><p>这个词让你想起谁、在什么地方、什么时刻会说到它。</p></div>
         <div><span>03</span><b>授权与审核</b><p>签署公益使用授权，经人工复核后进入大众声音库。</p></div>
       </div>
+      <div class="mock-record" id="mockRecord">
+        <div class="mock-record-head">
+          <span class="mock-record-dot" aria-hidden="true"></span>
+          <b>模拟录制演示</b>
+          <span class="mock-record-time" id="mockRecordTime">00:00</span>
+        </div>
+        <div class="mock-wave" id="mockWave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="mock-record-tip" id="mockRecordTip">这是流程演示，不会调用麦克风、不上传任何内容；正式版将在此录制你的声音。</p>
+        <div class="mock-record-actions">
+          <button class="btn btn-small btn-primary" id="mockRecordStart" type="button">模拟开始录制</button>
+          <button class="btn btn-small btn-ghost" id="mockRecordStop" type="button" disabled>停止</button>
+        </div>
+      </div>
       <div class="about-note"><p>当前为体验版入口。正式版将开放录音上传、文本提交与 24 小时内审核；所有内容仅用于非商业公益展示，可随时申请撤回。</p></div>
       <div class="detail-actions">
         <button class="btn btn-primary" id="buildNotify" type="button">留下共建意向</button>
@@ -352,6 +389,7 @@
   </noscript>
 
   <script src="assets/js/data.js"></script>
+  <script src="assets/js/qrcode.min.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

@@ -1,22 +1,25 @@
-# 真人录音放置说明
+# 音频说明
 
-把两岸田野采集的音频放在这个目录。
+当前目录存放 6 段**生成音频**（机器合成，非真人录音、非田野采集），前端优先播放；正式提交前请用两岸田野采集的真人录音覆盖同名文件。
 
 推荐格式：`.mp3` 或 `.m4a`，单词 + 一句生活短句，保留适度环境音，48kHz / 24bit 源文件。
 
-命名建议：
+## 当前音频清单
 
-- `taiyang-cn-1.mp3` / `taiyang-tw-1.mp3`
-- `puguang-cn-1.mp3` / `puguang-tw-1.mp3`
-- `shuxi-cn-1.mp3` / `shuxi-tw-1.mp3`
-- `keren-cn-1.mp3` / `keren-tw-1.mp3`
-- `ganmao-cn-1.mp3` / `ganmao-tw-1.mp3`
-- `guoding-cn-1.mp3` / `guoding-tw-1.mp3`
+首版 3 组、每组两岸各一段（同岸两位讲述者共用该段音轨）：
 
-然后在 `../js/data.js` 对应 voice 的 `audio` 字段填写相对路径，例如：
+| 词条 | 大陆音频（普通话） | 台湾音频（台湾口音） |
+| --- | --- | --- |
+| 太阳 / 日頭 | `taiyang-cn.mp3` | `taiyang-tw.mp3` |
+| 期 qī / 期 qí | `qi-cn.mp3` | `qi-tw.mp3` |
+| 微 wēi / 微 wéi | `wei-cn.mp3` | `wei-tw.mp3` |
+
+音频路径已在 `../js/data.js` 的 voice `audio` 字段填写，例如：
 
 ```js
-audio: "assets/audio/taiyang-cn-1.mp3"
+audio: "assets/audio/taiyang-cn.mp3"
 ```
 
-没有填写或加载失败时，页面会回退到浏览器语音合成，并在「关于」中标注为声音样带。
+## 回退机制
+
+音频加载失败时，页面回退到浏览器语音合成，并在体验顶部、词卡角标与「关于」中标注。生成音频为真人口播的替代样带，界面已标注“生成音频 · 非田野采集”，不会冒充真人采访。正式版替换为真人录音后，各组音轨数量可按“每组两岸各 2 个声音”扩展，并在 `data.js` 中为每个 voice 单独填写路径。
