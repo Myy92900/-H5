@@ -1,7 +1,8 @@
 /* 同源共响 · 词库
  * 说明：故事为团队撰写的演示文本，非田野采集；正式版替换为受访者确认稿。
  * 首版 3 组：1 组同源异形词（日头）+ 2 组同源异读词（期/微）。
- * audio 已接入生成音频（机器合成，非真人田野录音）：每组两岸各一段，同岸两位讲述者共用该段。
+ * audio 已接入生成音频（机器合成，非真人田野录音）：每组两岸各 2 位讲述者，各有自己的音轨。
+ * voices[0] 为点进来默认播放的音频，voices[1] 为点“换声音”后播放的音频（-alt 文件）。
  * 音频加载失败时自动回退到浏览器语音合成；ttsSpeak 用同音字引导台湾侧读音。
  */
 window.SAME_ORIGIN = {
@@ -51,7 +52,7 @@ window.SAME_ORIGIN = {
             quote: "夏天下午三四点，太阳还毒得很，我就把遮阳板放下来。",
             story: "开了十几年车，太阳在哪个季节照进哪一排座位，我大概都知道。",
             storyStatus: "演示文本 · 非田野采集",
-            audio: "assets/audio/taiyang-cn.mp3",
+            audio: "assets/audio/taiyang-cn-alt.mp3",
             ttsText: "太阳"
           }
         ]
@@ -77,13 +78,13 @@ window.SAME_ORIGIN = {
             ttsText: "日头"
           },
           {
-            tag: "演示 · 老年 · 社区志工",
+            tag: "演示 · 青年 · 社区志工",
             place: "高雄",
-            avatar: "老",
+            avatar: "青",
             quote: "日头一下山，巷子里的风就凉了，大家才慢慢搬椅子出来。",
             story: "谁家的孩子回来了，谁家的花开了，都是在这个时候听见的。",
             storyStatus: "演示文本 · 非田野采集",
-            audio: "assets/audio/taiyang-tw.mp3",
+            audio: "assets/audio/taiyang-tw-alt.mp3",
             ttsText: "日头"
           }
         ]
@@ -131,7 +132,7 @@ window.SAME_ORIGIN = {
             quote: "这期的稿子终于排完了，期限就在这周五。",
             story: "赶完这一期，我打算带家人出去吃顿好的，歇口气。",
             storyStatus: "演示文本 · 非田野采集",
-            audio: "assets/audio/qi-cn.mp3",
+            audio: "assets/audio/qi-cn-alt.mp3",
             ttsText: "期"
           }
         ]
@@ -164,7 +165,7 @@ window.SAME_ORIGIN = {
             quote: "很期待下个月的假期，早就跟朋友约好去花莲了。",
             story: "这段时间天天泡实验室，难得能休几天，我特别期待。",
             storyStatus: "演示文本 · 非田野采集",
-            audio: "assets/audio/qi-tw.mp3",
+            audio: "assets/audio/qi-tw-alt.mp3",
             ttsText: "期"
           }
         ]
@@ -212,7 +213,7 @@ window.SAME_ORIGIN = {
             quote: "这点细微的变化可得盯着，病人这几天情况不太稳。",
             story: "值了一整夜的班，天亮时看见了报告，总算松了口气。",
             storyStatus: "演示文本 · 非田野采集",
-            audio: "assets/audio/wei-cn.mp3",
+            audio: "assets/audio/wei-cn-alt.mp3",
             ttsText: "微"
           }
         ]
@@ -245,7 +246,7 @@ window.SAME_ORIGIN = {
             quote: "这张图我稍微改了一下颜色，客户说这版就对了。",
             story: "改了十几稿终于定案，我赶紧存档，怕又来一个新需求。",
             storyStatus: "演示文本 · 非田野采集",
-            audio: "assets/audio/wei-tw.mp3",
+            audio: "assets/audio/wei-tw-alt.mp3",
             ttsText: "微"
           }
         ]
