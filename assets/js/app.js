@@ -40,6 +40,7 @@
     activeSide: null,
     playingSide: null,
     played: { mainland: false, taiwan: false },
+    pendingMerge: false,
     merged: false,
     muted: false,
     carousel: false,
@@ -432,6 +433,7 @@
     state.activeSide = null;
     state.playingSide = null;
     state.played = { mainland: false, taiwan: false };
+    state.pendingMerge = false;
     state.merged = false;
     state.voiceIndex = { mainland: 0, taiwan: 0 };
     state.carouselIndex = 0;
@@ -562,6 +564,11 @@
     el.cardTaiwan.classList.remove("is-playing");
     el.cnListen.textContent = state.played.mainland ? "再听一次" : "点击听音";
     el.twListen.textContent = state.played.taiwan ? "再听一次" : "点击听音";
+    // 两条录音都播放结束 → 共鸣成功，进度条读满 100%。
+    if (state.pendingMerge && !state.merged && state.played.mainland && state.played.taiwan) {
+      state.pendingMerge = false;
+      mergeStage();
+    }
     if (state.pendingChime) {
       state.pendingChime = false;
       clearTimeout(state.chimeTimer);
@@ -1123,19 +1130,22 @@
 
     if (!opts.silent) playVoice(pair, side, state.voiceIndex[side], token);
 
-    // 进度由真实交互驱动：只有两岸都听过，才从「听见」推进到「溯源」再到「共鸣」。
-    // 单条录音只停在「听见」阶段，不再自动把进度条读满。
+    // 进度与真实交互对齐：
+    // 未点录音 = 听见 0%；点任意一条 = 溯源 45%；两条录音都播放结束 = 共鸣 100%。
     const both = state.played.mainland && state.played.taiwan;
-    setJourney("listen");
-    if (both) {
+    if (state.merged) {
+      // 本组词已完成共鸣，重听不回退进度。
+      setJourney("echo");
+    } else {
+      setJourney("trace"); // 任意一条录音即推进到 45%
       later(function () {
-        if (state.playToken !== token) return;
-        traceStage();          // 听见 → 溯源 45%
-      }, 1100);
-      later(function () {
-        if (state.playToken !== token) return;
-        mergeStage();          // 溯源 → 共鸣 100%
-      }, 2700);
+        if (state.playToken !== token || state.merged) return;
+        traceStage();
+      }, 450);
+      if (both) {
+        // 两岸都点过，等当前这条播放结束再共鸣（由 finishPlayback 触发）。
+        state.pendingMerge = true;
+      }
     }
   }
 
@@ -1270,6 +1280,7 @@
     // 主动查看词源即视为“溯源→共鸣”的交互：补齐阶段，让进度条真实反映到访。
     if (state.started && !state.merged) {
       clearTimers();
+      state.pendingMerge = false;
       traceStage();
       mergeStage();
     }
@@ -1743,6 +1754,7 @@
     // 生成同源卡是收束动作，同样补齐到共鸣阶段（不会重复触发音效/动画）。
     if (state.started && !state.merged) {
       clearTimers();
+      state.pendingMerge = false;
       traceStage();
       mergeStage();
     }
